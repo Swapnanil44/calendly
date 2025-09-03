@@ -41,6 +41,11 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+
+  /* Container configuration */
+  --default-container-center: true;
+  --default-container-padding-x: 2rem;
+  --breakpoint-2xl: 1400px;
 }
 
 :root {
@@ -120,3 +125,20 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer components {
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  
+  @media (min-width: 1400px) {
+    .container {
+      max-width: 1400px;
+    }
+  }
+}
+

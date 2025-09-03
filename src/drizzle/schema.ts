@@ -23,12 +23,12 @@ export const EventTable = pgTable("events", {
   name: text("name").notNull(),
   description: text("description"),
   durationInMinutes: integer("durationInMinutes").notNull(),
-  clearkUserId: text("clerkUserId").notNull(),
+  clerkUserId: text("clerkUserId").notNull(),
   isActive: boolean("isActive").notNull().default(true),
   createdAt,
   updatedAt,
 }, table => ({
-    clerkUserIdIndex: index("clerkUserIdIndex").on(table.clearkUserId)
+    clerkUserIdIndex: index("clerkUserIdIndex").on(table.clerkUserId)
 }));
 
 
