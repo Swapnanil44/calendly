@@ -1,5 +1,4 @@
 import { DAYS_OF_WEEK_IN_ORDER } from "@/data/constants";
-import { table } from "console";
 import { relations } from "drizzle-orm";
 import {
   boolean,
@@ -13,7 +12,7 @@ import {
 } from "drizzle-orm/pg-core";
 
 const createdAt = timestamp("createdAt").notNull().defaultNow();
-const updatedAt = timestamp("createdAt")
+const updatedAt = timestamp("updatedAt")
   .notNull()
   .defaultNow()
   .$onUpdate(() => new Date());
