@@ -18,24 +18,37 @@ import { Button } from "../ui/button";
 import Link from "next/link";
 import { Textarea } from "../ui/textarea";
 import { Switch } from "../ui/switch";
-import { createEvent } from "@/server/actions/events";
+import { createEvent, updateEvent } from "@/server/actions/events";
 
-function EventForm() {
+function EventForm({
+  event,
+}: {
+  event?: {
+    id?: string;
+    name?: string;
+    description?: string;
+    durationInMinutes?: number;
+    isActive?: boolean;
+  };
+}) {
   const form = useForm<z.infer<typeof eventFormSchema>>({
     resolver: zodResolver(eventFormSchema),
     defaultValues: {
-      isActive: true,
-      durationInMinutes: 30,
+      name: event?.name ?? "",
+      description: event?.description ?? "",
+      durationInMinutes: event?.durationInMinutes ?? 30,
+      isActive: event?.isActive ?? true,
     },
   });
 
   async function onSubmit(values: z.infer<typeof eventFormSchema>) {
-    const data = await createEvent(values);
+    const action = event === null ? createEvent : updateEvent.bind(null, event?.id || "")
+    const data = await action(values);
 
     if (data?.error) {
       form.setError("root", {
         message: "There was an error saving your event",
-      })
+      });
     }
   }
   return (
