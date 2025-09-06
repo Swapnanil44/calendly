@@ -1,0 +1,1 @@
+ALTER TABLE "schedules" RENAME COLUMN "timeZone" TO "timezone";

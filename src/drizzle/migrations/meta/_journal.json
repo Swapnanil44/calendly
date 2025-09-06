@@ -15,6 +15,13 @@
       "when": 1756973649415,
       "tag": "0001_massive_nick_fury",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1757146873672,
+      "tag": "0002_slippery_azazel",
+      "breakpoints": true
     }
   ]
 }

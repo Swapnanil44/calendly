@@ -28,7 +28,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
   AlertDialogContent,
-  AlertDialogAction
+  AlertDialogAction,
 } from "../ui/alert-dialog";
 import { useState, useTransition } from "react";
 
@@ -165,17 +165,17 @@ function EventForm({
                   <AlertDialogCancel>Cancel</AlertDialogCancel>
                   <AlertDialogAction
                     disabled={isDeletePending || form.formState.isSubmitting}
-                    variant = "destructive"
+                    variant="destructive"
                     onClick={() => {
                       startDeleteTransition(async () => {
-                        const data = await deleteEvent(event.id || "")
+                        const data = await deleteEvent(event.id || "");
 
-                        if(data?.error){
+                        if (data?.error) {
                           form.setError("root", {
-                            message: "This was an error deleting your event"
-                          })
+                            message: "This was an error deleting your event",
+                          });
                         }
-                      })
+                      });
                     }}
                   >
                     Delete
@@ -184,10 +184,20 @@ function EventForm({
               </AlertDialogContent>
             </AlertDialog>
           )}
-          <Button type="button" asChild variant="outline">
+          <Button
+            type="button"
+            asChild
+            variant="outline"
+            disabled={isDeletePending || form.formState.isSubmitting}
+          >
             <Link href="/events">Cancel</Link>
           </Button>
-          <Button type="submit">Save</Button>
+          <Button
+            type="submit"
+            disabled={isDeletePending || form.formState.isSubmitting}
+          >
+            Save
+          </Button>
         </div>
       </form>
     </Form>
