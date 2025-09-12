@@ -75,7 +75,7 @@ function EventCard({
   return (
     <Card className={cn("flex flex-col", !isActive && "border-secondary/50")}>
       <CardHeader className={cn(!isActive && "opacity-50")}>
-        <CardTitle>{name}</CardTitle>
+        <CardTitle className="text-xl md:text-3xl">{name}</CardTitle>
         <CardDescription>
           {formatEventDescription(durationInMinutes)}
         </CardDescription>

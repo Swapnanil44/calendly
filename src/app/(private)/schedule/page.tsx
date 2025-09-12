@@ -5,6 +5,8 @@ import { db } from "@/drizzle/db";
 import { auth } from "@clerk/nextjs/server";
 import React from "react";
 
+export const revalidated = 0;
+
 export default async function SchedulePage() {
   const { userId, redirectToSignIn } = await auth();
 
